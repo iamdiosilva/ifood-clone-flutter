@@ -52,7 +52,7 @@ class _ContentPageState extends State<ContentPage> with SingleTickerProviderStat
                             return Padding(
                               padding: EdgeInsets.only(
                                 left: index == 0 ? 16 : 0,
-                                right: index == 20 - 1 ? 16 : 0,
+                                right: index == 20 - 1 ? 16 : 8,
                               ),
                               child: Text('Categoria$index'),
                             );
