@@ -40,6 +40,27 @@ class _ContentPageState extends State<ContentPage> with SingleTickerProviderStat
               Expanded(
                 child: CustomScrollView(
                   physics: BouncingScrollPhysics(),
+                  slivers: [
+                    SliverToBoxAdapter(
+                      child: SizedBox(
+                        height: 80,
+                        child: ListView.builder(
+                          physics: BouncingScrollPhysics(),
+                          scrollDirection: Axis.horizontal,
+                          itemCount: 20,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Padding(
+                              padding: EdgeInsets.only(
+                                left: index == 0 ? 16 : 0,
+                                right: index == 20 - 1 ? 16 : 0,
+                              ),
+                              child: Text('Categoria$index'),
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
               BottomNavigatorComponent(
