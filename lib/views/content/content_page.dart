@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:ifood_clone/views/content/components/bottom_navigator_component.dart';
 import 'package:ifood_clone/views/content/components/content_tab_bar_component.dart';
 
+import '../../controllers/content_controller.dart';
 import '../../core/theme/app_icons.dart';
+import '../../models/category.dart';
 import 'components/category_item_component.dart';
 import 'components/header_local_component.dart';
 
@@ -15,12 +17,15 @@ class ContentPage extends StatefulWidget {
 
 class _ContentPageState extends State<ContentPage> with SingleTickerProviderStateMixin {
   late final TabController tabController;
+  final controller = ContentController();
+  late List<Category> categories;
 
   int _currentIndex = 0;
 
   @override
   void initState() {
     tabController = TabController(length: 2, vsync: this);
+    categories = controller.getCategories();
     super.initState();
   }
 
@@ -39,29 +44,36 @@ class _ContentPageState extends State<ContentPage> with SingleTickerProviderStat
           body: Column(
             children: [
               Expanded(
-                child: CustomScrollView(
-                  physics: BouncingScrollPhysics(),
-                  slivers: [
-                    SliverToBoxAdapter(
-                      child: SizedBox(
-                        height: 86,
-                        child: ListView.builder(
-                          physics: BouncingScrollPhysics(),
-                          scrollDirection: Axis.horizontal,
-                          itemCount: 20,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Padding(
-                              padding: EdgeInsets.only(
-                                left: index == 0 ? 16 : 0,
-                                right: index == 20 - 1 ? 16 : 10,
-                              ),
-                              child: CategoryItemComponent(),
-                            );
-                          },
+                child: RefreshIndicator(
+                  onRefresh: () async {
+                    return await Future.value();
+                  },
+                  child: CustomScrollView(
+                    physics: BouncingScrollPhysics(),
+                    slivers: [
+                      SliverToBoxAdapter(
+                        child: SizedBox(
+                          height: 86,
+                          child: ListView.builder(
+                            physics: BouncingScrollPhysics(),
+                            scrollDirection: Axis.horizontal,
+                            itemCount: categories.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              return Padding(
+                                padding: EdgeInsets.only(
+                                  left: index == 0 ? 16 : 0,
+                                  right: index == categories.length - 1 ? 16 : 10,
+                                ),
+                                child: CategoryItemComponent(
+                                  category: categories[index],
+                                ),
+                              );
+                            },
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
               BottomNavigatorComponent(

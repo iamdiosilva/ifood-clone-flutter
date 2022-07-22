@@ -13,8 +13,8 @@ class Category {
     required String picture,
   }) {
     return Category(
-      name: name ?? this.name,
-      picture: picture ?? this.picture,
+      name: name,
+      picture: picture,
     );
   }
 
