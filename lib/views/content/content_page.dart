@@ -3,6 +3,7 @@ import 'package:ifood_clone/views/content/components/bottom_navigator_component.
 import 'package:ifood_clone/views/content/components/content_tab_bar_component.dart';
 
 import '../../core/theme/app_icons.dart';
+import 'components/category_item_component.dart';
 import 'components/header_local_component.dart';
 
 class ContentPage extends StatefulWidget {
@@ -43,7 +44,7 @@ class _ContentPageState extends State<ContentPage> with SingleTickerProviderStat
                   slivers: [
                     SliverToBoxAdapter(
                       child: SizedBox(
-                        height: 80,
+                        height: 86,
                         child: ListView.builder(
                           physics: BouncingScrollPhysics(),
                           scrollDirection: Axis.horizontal,
@@ -52,9 +53,9 @@ class _ContentPageState extends State<ContentPage> with SingleTickerProviderStat
                             return Padding(
                               padding: EdgeInsets.only(
                                 left: index == 0 ? 16 : 0,
-                                right: index == 20 - 1 ? 16 : 8,
+                                right: index == 20 - 1 ? 16 : 10,
                               ),
-                              child: Text('Categoria$index'),
+                              child: CategoryItemComponent(),
                             );
                           },
                         ),
