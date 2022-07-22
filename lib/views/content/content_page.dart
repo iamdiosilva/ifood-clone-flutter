@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ifood_clone/core/theme/app_images.dart';
+import 'package:ifood_clone/views/content/components/banners_component.dart';
 
 import '../../controllers/content_controller.dart';
 import '../../core/theme/app_colors.dart';
@@ -40,7 +42,7 @@ class _ContentPageState extends State<ContentPage> with SingleTickerProviderStat
           physics: BouncingScrollPhysics(),
           headerSliverBuilder: (context, innerBoxIsScrolled) {
             return [
-              HeaderLocalComponent(location: 'Rua do Aertoporto, Juazeiro do Norte, Ceará'),
+              HeaderLocalComponent(location: 'Rua do Aertoporto, 10 - Juazeiro do Norte, Ceará'),
               ContentTabBarComponent(controller: tabController, onTap: (index) {}),
               FiltersComponent(),
             ];
@@ -73,6 +75,19 @@ class _ContentPageState extends State<ContentPage> with SingleTickerProviderStat
                                 ),
                               );
                             },
+                          ),
+                        ),
+                      ),
+                      SliverToBoxAdapter(
+                        child: SizedBox(
+                          height: 170,
+                          child: BannersComponent(
+                            listBanners: [
+                              BannerItemComponent(imagePath: AppImages.banner1),
+                              BannerItemComponent(imagePath: AppImages.banner2),
+                              BannerItemComponent(imagePath: AppImages.banner3),
+                              BannerItemComponent(imagePath: AppImages.banner4),
+                            ],
                           ),
                         ),
                       ),
