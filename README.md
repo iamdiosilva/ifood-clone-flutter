@@ -1,6 +1,8 @@
 # ifood_clone
 
-A new Flutter project.
+Clone da Interface do Ifood.
+
+- Diógenes Silva
 
 ## Getting Started
 
