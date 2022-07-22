@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:ifood_clone/views/content/components/bottom_navigator_component.dart';
-import 'package:ifood_clone/views/content/components/content_tab_bar_component.dart';
 
 import '../../controllers/content_controller.dart';
+import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_icons.dart';
 import '../../models/category.dart';
+import 'components/bottom_navigator_component.dart';
 import 'components/category_item_component.dart';
+import 'components/content_tab_bar_component.dart';
+import 'components/filters_component.dart';
 import 'components/header_local_component.dart';
 
 class ContentPage extends StatefulWidget {
@@ -32,6 +34,7 @@ class _ContentPageState extends State<ContentPage> with SingleTickerProviderStat
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.white,
       body: SafeArea(
         child: NestedScrollView(
           physics: BouncingScrollPhysics(),
@@ -39,6 +42,7 @@ class _ContentPageState extends State<ContentPage> with SingleTickerProviderStat
             return [
               HeaderLocalComponent(location: 'Rua do Aertoporto, Juazeiro do Norte, Ceará'),
               ContentTabBarComponent(controller: tabController, onTap: (index) {}),
+              FiltersComponent(),
             ];
           },
           body: Column(
@@ -83,7 +87,7 @@ class _ContentPageState extends State<ContentPage> with SingleTickerProviderStat
                   });
                 },
                 currentIndex: _currentIndex,
-                bottomItems: [
+                bottomItems: const [
                   BottomNavigatorItemComponent(label: 'Inicio', activeIcon: AppIcons.homeActive, icon: AppIcons.home),
                   BottomNavigatorItemComponent(label: 'Busca', activeIcon: AppIcons.searchActive, icon: AppIcons.search),
                   BottomNavigatorItemComponent(label: 'Pedidos', activeIcon: AppIcons.ordersActive, icon: AppIcons.orders),

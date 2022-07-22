@@ -38,7 +38,7 @@ class _HeaderLocalComponentDelagate extends SliverPersistentHeaderDelegate {
                 location,
                 style: AppTypography.localTextStyle(context),
               ),
-              AppIcon(
+              const AppIcon(
                 AppIcons.arrowDown,
                 size: Size(20, 20),
                 color: AppColors.primaryColor,
@@ -51,11 +51,9 @@ class _HeaderLocalComponentDelagate extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  // TODO: implement maxExtent
   double get maxExtent => 40;
 
   @override
-  // TODO: implement minExtent
   double get minExtent => 40;
 
   @override

@@ -27,4 +27,8 @@ class AppTypography {
   static TextStyle? tabBarStyle(BuildContext context) {
     return Theme.of(context).textTheme.bodyText1!.copyWith(color: AppColors.primaryColor, fontWeight: FontWeight.w700);
   }
+
+  static TextStyle? filterItemStyle(BuildContext context) {
+    return Theme.of(context).textTheme.bodyText1!.copyWith(color: AppColors.primaryColor, fontWeight: FontWeight.normal, fontSize: 13);
+  }
 }
