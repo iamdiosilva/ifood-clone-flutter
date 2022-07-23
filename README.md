@@ -1,6 +1,8 @@
 # ifood_clone
 
-Clone da Interface(2021) do Ifood.
+Clone Ifood Interface(2021).
+
+<img src="https://user-images.githubusercontent.com/65866387/180585576-45a2c0c6-850e-4436-979c-7225555a7e49.png" width="540" height="1170">
 
 - Diógenes Silva
 
