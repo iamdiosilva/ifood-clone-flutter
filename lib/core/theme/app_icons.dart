@@ -5,6 +5,13 @@ const String pathIcons = 'assets/icons/';
 
 class AppIcons {
   static const arrowDown = '${pathIcons}arrow_down.svg';
+
+  static const fav = '${pathIcons}fav.svg';
+  static const favLine = '${pathIcons}fav_line.svg';
+  static const offer = '${pathIcons}offer.svg';
+  static const star = '${pathIcons}star.svg';
+
+  /* Bottom Navigator Icons */
   static const homeActive = '${pathIcons}bottom/home_active.svg';
   static const home = '${pathIcons}bottom/home.svg';
 

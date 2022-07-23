@@ -11,9 +11,27 @@ class BannersComponent extends StatefulWidget {
 }
 
 class _BannersComponentState extends State<BannersComponent> {
-  final PageController _pageController = PageController(
-    viewportFraction: 0.8,
-  );
+  int _currentIndex = 0;
+
+  final PageController _pageController = PageController(viewportFraction: 0.8);
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController.addListener(_onChangePage);
+  }
+
+  _onChangePage() {
+    setState(() {
+      _currentIndex = _pageController.page!.round();
+    });
+  }
+
+  @override
+  void dispose() {
+    _pageController.removeListener(_onChangePage);
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,19 +49,20 @@ class _BannersComponentState extends State<BannersComponent> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 8),
+            padding: const EdgeInsets.only(top: 12),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: widget.listBanners
                   .map((e) => Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 4),
-                        child: Container(
+                        child: AnimatedContainer(
+                          duration: Duration(milliseconds: 200),
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: AppColors.grey700,
+                            color: widget.listBanners.indexOf(e) == _currentIndex ? AppColors.grey700 : AppColors.grey200,
                           ),
-                          height: 5,
-                          width: 5,
+                          height: 6,
+                          width: 6,
                         ),
                       ))
                   .toList(),
